@@ -1,3 +1,6 @@
+---
+title: JS表单序列号与反序列化
+---
 # JS表单序列号与反序列化
 
 > `jQuery`有这两个方法 `.serializeArray()` 与`.serialize()`.
