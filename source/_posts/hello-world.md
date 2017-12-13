@@ -1,38 +1,25 @@
----
-title: Hello World
----
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+# hexo使用笔记
 
-## Quick Start1
+## 常用命令
 
-### Create a new post
-
-``` bash
-$ hexo new "My New Post"
+```bash
+hexo new [layout] <title> 写新文章
+hexo g 生成
+hexo server 本地运行
+hexo deploy 部署
 ```
 
-More info: [Writing](https://hexo.io/docs/writing.html)
+## 部署配置
 
-### Run server
+*_git方式_*
 
-``` bash
-$ hexo server
+安装： `npm install hexo-deployer-git --save`
+
+修改`_config.yml`文件：
+
+```yaml
+deploy:
+  type: git
+  repository: git@github.com:heguichuan/heguichuan.github.io.git
+  branch: master
 ```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
