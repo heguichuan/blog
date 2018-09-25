@@ -65,3 +65,5 @@ _loadingDomStr () {
 > 1. [SpinKit](https://github.com/tobiasahlin/SpinKit) 可以直接拷贝demo代码，用哪个拷哪个很方便。
 > 2. [loaders.css](https://github.com/ConnorAtherton/loaders.css) 另外一个实现，有react、vue等版本。
 > 3. [loading](https://github.com/jxnblk/loading/) svg动画。
+>
+> 在线生成loading的网站：[https://loading.io/](https://loading.io/)
