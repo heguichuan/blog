@@ -1,5 +1,6 @@
 ---
 title: 设置input placeholder颜色
+date: 2018-5-12 14:36:35
 ---
 
 参考链接：[使用CSS修改HTML5 input placeholder颜色](https://segmentfault.com/q/1010000000397925)
