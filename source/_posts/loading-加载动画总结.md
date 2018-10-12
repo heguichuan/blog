@@ -1,6 +1,6 @@
 ---
 title: loading-加载动画总结
-tags: css,前端,笔记
+tags: css
 notebook: 笔记&博客
 ---
 # loading - 加载动画总结

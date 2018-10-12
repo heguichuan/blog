@@ -3,13 +3,19 @@ title: hexo使用笔记
 ---
 # hexo使用笔记
 
+## 安装
+
+```bash
+npm install -g hexo-cli
+```
+
 ## 常用命令
 
 ```bash
-hexo new [layout] <title> 写新文章
-hexo g 生成
-hexo server 本地运行
-hexo deploy 部署
+hexo new [layout] <title> #写新文章
+hexo g #生成
+hexo server #本地运行
+hexo deploy #部署
 ```
 
 ## 部署配置
