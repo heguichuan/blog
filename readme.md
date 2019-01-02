@@ -12,6 +12,9 @@
 git clone
 yarn / npm install
 # 修改文章
+hexo server
+# or
+hexo clean
 hexo g #生成
 hexo d #部署到github.io
 # 更新完毕后
