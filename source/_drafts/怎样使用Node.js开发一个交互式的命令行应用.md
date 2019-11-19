@@ -69,7 +69,100 @@ hello world
 
 ## 操作命令行参数
 
-读命令行参数并不困难，你可以简单地使用[process.argv](https://nodejs.org/docs/latest/api/process.html)读取它们。然而，解析它们的值和选项是一个复杂的工作。所以，取代重复造轮子，我们将使用`Commander`模块。`Commander`是一个开源的Node.js模块，它是一个实现可交互命令行的工具。它自带非常有趣的功能用于解析命令行选项，并且它有着类`git`的子指令，
+读命令行参数并不困难，你可以简单地使用[process.argv](https://nodejs.org/docs/latest/api/process.html)读取它们。然而，解析它们的值和选项是一个复杂的工作。所以，取代重复造轮子，我们将使用`Commander`模块。`Commander`是一个开源的Node.js模块，它是一个实现可交互命令行的工具。它自带非常有趣的功能用于解析命令行选项，并且它有着类`git`的子指令，但是对于`commander`我最喜欢的一点却是帮助屏自动生成。你不需要写额外的代码命令，仅需要输入--help或者-h选项。和你自定义的各种命令一样，--help命令是直接内置可以用的。让我们来深入了解一下吧：
+
+```bash
+npm install commander --save
+```
+
+这将在你的nodejs项目中安装`commander`模块。 `--save`将自动维护你的依赖，下次就不需要再执行这个命令了。
+
+```javascript
+var program = require('commander');
+
+program
+  .version('0.0.1')
+  .option('-l, --list [list]', 'list of customers in CSV file')
+  .parse(process.argv)
+
+console.log(program.list);
+```
+
+正如你所见，操作命令行是简单直接的。我们定义了一个`--list`选项。现在，无论我们在`--list`选项后面提供什么值，都会被存储在一个代码块包裹的变量中（在这个例子中是`list`）。你可以从`program`中访问它，这是一个`commander`实例。在下面的例子中，这program只接收了一个文件路径作为`--list`的选项，然后把它打印了出来。
+
+```bash
+$ node broadcast --list input/employees.csv
+input/employees.csv
+```
+
+你应该已经注意到，同样有个名为`version`的方法被链式调用，无论我们在命令行中给`--version`或者`-v`传任何值，它最终取到的都是在方法中传入的值。
+
+```bash
+$ node broadcast --version
+0.0.1
+```
+
+类似的，当你以`--help`选项运行命令时，它将打印所有你定义的的选项和子命令。在本例中，它看起来如下：
+
+```bash
+$ node broadcast --help
+
+  Usage: broadcast [options]
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -l, --list <list>          list of customers in CSV file
+
+```
+
+当我们从命令行参数中接收了文件路径，我们可以开始使用`csv`模块读取CSV文件了。这`csv`模块是一个操作CSV文件的多合一解决方案。从创建CSV文件到解析它，你可以使用这个模块实现任何事情。
+
+因为我们计划使用`SendGrid API`发送邮件，我们使用如下的文档作为一个简单的CSV文件。使用CSV模块，我们将按行读取数据、并且显示名字和邮件地址。
+
+| **First name** | **Last name** |            **Email**             |
+| :------------: | :-----------: | :------------------------------: |
+|     Dwight     |    Schrute    | dwight.schrute@dundermifflin.com |
+|      Jim       |    Halpert    |  jim.halpert@dundermifflin.com   |
+|      Pam       |    Beesly     |   pam.beesly@dundermifflin.com   |
+|      Ryan      |    Howard     |  ryan.howard@dundermifflin.com   |
+|    Stanley     |    Hudson     | stanley.hudson@dundermifflin.com |
+
+现在，让我们写个程序去读CSV文件并且把数据打印到console中。
+
+```javascript
+const program = require('commander');
+const csv = require('csv');
+const fs = require('fs');
+
+program
+  .version('0.0.1')
+  .option('-l, --list [list]', 'List of customers in CSV')
+  .parse(process.argv)
+
+let parse = csv.parse;
+let stream = fs.createReadStream(program.list)
+    .pipe(parse({ delimiter : ',' }));
+
+stream
+  .on('data', function (data) {
+    let firstname = data[0];
+    let lastname = data[1];
+    let email = data[2];
+    console.log(firstname, lastname, email);
+  });
+```
+
+使用内置的[File System](https://nodejs.org/api/fs.html)模块读取文件，
+
+
+
+
+
+
+
+
 
 
 
