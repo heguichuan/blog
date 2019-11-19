@@ -2,21 +2,23 @@
 
 ## 使用前准备
 
-1. 安装npm/yarn
+1. 安装 npm/yarn
 2. 安装 hexo-cli `yarn global add hexo-cli`
-3. 安装git, 部署的时候需要用到
+3. 安装 git, 部署的时候需要用到
 
 ## 使用方法
 
 ```bash
 git clone
 yarn / npm install
-# 修改文章
+
+# 修改文章，本地预览
 hexo server
-# or
+# or部署
 hexo clean
 hexo g #生成
 hexo d #部署到github.io
+
 # 更新完毕后
 git commit
 git push
@@ -24,7 +26,7 @@ git push
 
 ## 问题与解决
 
-__1.新装的操作系统部署的时候报错__ 
+**1.新装的操作系统部署的时候报错**
 
 ```bash
 INFO  Copying files from extend dirs...
@@ -38,4 +40,4 @@ Error: spawn git ENOENT
     at Process.ChildProcess._handle.onexit (internal/child_process.js:198:12)
 ```
 
-**解决方法：** 使用git bash执行部署命令可解决。 
+**解决方法：** 使用 git bash 执行部署命令可解决。
