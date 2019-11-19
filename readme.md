@@ -12,7 +12,9 @@
 git clone
 yarn / npm install
 
-# 修改文章，本地预览
+# 新建文章
+hexo new [layout] <title> #写新文章
+# 本地预览
 hexo server
 # or部署
 hexo clean
